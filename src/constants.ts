@@ -1,1 +1,1 @@
-export const RECOVERY_DASHBOARD_URL = 'https://recovery-demo.onrender.com'
+export const RECOVERY_DASHBOARD_URL = 'https://kernel-dashboard.onrender.com'
