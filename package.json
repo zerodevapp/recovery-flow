@@ -1,8 +1,22 @@
 {
-  "name": "recovery-utils",
+  "name": "@zerodev/recovery",
   "version": "0.0.1-beta.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Easily integrate a recovery option for a Kernel smart contract wallet.",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
+  "typings": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "default": "./dist/cjs/index.js"
+    },
+    "./package.json": "./package.json"
+  },
   "scripts": {
     "clean": "rm -rf ./dist",
     "build:cjs": "tsc --project tsconfig.json --module commonjs --outDir ./dist/cjs --removeComments --verbatimModuleSyntax false",

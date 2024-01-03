@@ -1,4 +1,4 @@
-# @zerodev/{name_tbd}
+# @zerodev/recovery
 
 This package helps dApp developers to easily integrate a recovery option for Kernel smart contract wallets. The `useKernelAccountRecovery` hook opens a popup for users to set up a guardian without the dApp needing to implement its own recovery flow.
 
@@ -7,13 +7,13 @@ This package helps dApp developers to easily integrate a recovery option for Ker
 To install the package, run the following command:
 
 ```bash
-npm install @zerodev/{name_tbd}
+npm install @zerodev/recovery
 ```
 
 or
 
 ```bash
-yarn add @zerodev/{name_tbd}
+yarn add @zerodev/recovery
 ```
 
 ## Usage
@@ -21,7 +21,7 @@ Here is how you can use `useKernelAccountRecovery` hook in your React applicatio
 
 ```jsx
 import React from 'react';
-import { useKernelAccountRecovery } from "@zerodev/{name_tbd}";
+import { useKernelAccountRecovery } from "@zerodev/recovery";
 
 function App() {
   const kernelAddress = '0x...'; // Replace with actual kernel address
@@ -44,4 +44,4 @@ export default App;
 ```
 
 ## Contributing
-If you have suggestions for how @zerodev/{name_tbd} could be improved, or want to report a bug, open an issue or a pull request.
+If you have suggestions for how @zerodev/recovery could be improved, or want to report a bug, open an issue or a pull request.
