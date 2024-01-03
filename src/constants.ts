@@ -1,0 +1,1 @@
+export const RECOVERY_DASHBOARD_URL = 'https://recovery-demo.onrender.com'
