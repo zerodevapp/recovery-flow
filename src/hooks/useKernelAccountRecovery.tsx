@@ -1,10 +1,52 @@
-import { useRef, useEffect, useCallback, useState } from "react";
-import { RecoveryConfig, RecoveryPopupMessage, validateUserOperationCallData } from "./types";
-import { RECOVERY_DASHBOARD_URL } from "../constants";
+import { useRef, useEffect, useCallback, useState, useMemo } from "react";
+import useSWR from 'swr';
 
-const useKernelAccountRecovery = ({ address, onSetupGuardianRequest }: RecoveryConfig) => {
+import { RecoveryConfig, RecoveryPopupMessage, validateUserOperationCallData } from "./types";
+import { KERNEL_DASHBOARD_URL, RECOVERY_DASHBOARD_URL } from "../constants";
+
+const fetcher = async (url: string) => {
+  const response = await fetch(url);
+  return response.json();
+};
+
+type UseKernelAccountRecoveryResult = {
+  /**
+   * Opens the recovery popup
+   */
+  openRecoveryPopup: () => void;
+
+  /**
+   * Error message
+   */
+  error?: string;
+
+  /**
+   * Whether the account has guardians
+   */
+  recoveryEnabled: boolean;
+
+  /**
+   * List of guardian addresses
+   */
+  guardians: string[];
+};
+
+const useKernelAccountRecovery = ({ address, onSetupGuardianRequest }: RecoveryConfig): UseKernelAccountRecoveryResult => {
   const childWindowRef = useRef<Window | null>(null);
   const [error, setError] = useState<string | undefined>(undefined);
+
+  const { data } = useSWR(
+    () => address ? `${KERNEL_DASHBOARD_URL}/accounts/${address}/guardians` : null, 
+    fetcher,
+  );
+
+  const guardians = useMemo(() => {
+    if (!data) {
+      return [];
+    }
+
+    return data.map((guardian: any) => guardian.guardian);
+  }, [data]);
 
   const openRecoveryPopup = useCallback(() => {
     if (address === undefined) {
@@ -62,7 +104,9 @@ const useKernelAccountRecovery = ({ address, onSetupGuardianRequest }: RecoveryC
 
   return { 
     openRecoveryPopup,
-    error
+    error,
+    recoveryEnabled: guardians.length > 0,
+    guardians,
   };
 };
 
