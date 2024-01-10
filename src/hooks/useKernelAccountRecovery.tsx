@@ -36,8 +36,9 @@ const useKernelAccountRecovery = ({ address, onSetupGuardianRequest }: RecoveryC
   const [error, setError] = useState<string | undefined>(undefined);
 
   const { data } = useSWR(
-    () => address ? `${KERNEL_DASHBOARD_URL}/accounts/${address}/guardians` : null, 
+    address ? `${KERNEL_DASHBOARD_URL}/accounts/${address}/guardians` : null, 
     fetcher,
+    { refreshInterval: 3000 }
   );
 
   const guardians = useMemo(() => {
