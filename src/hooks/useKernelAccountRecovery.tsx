@@ -31,7 +31,7 @@ type UseKernelAccountRecoveryResult = {
   guardians: string[];
 };
 
-const useKernelAccountRecovery = ({ address, onSetupGuardianRequest }: RecoveryConfig): UseKernelAccountRecoveryResult => {
+const useKernelAccountRecovery = ({ address, onSetupGuardianRequest, chainId }: RecoveryConfig): UseKernelAccountRecoveryResult => {
   const childWindowRef = useRef<Window | null>(null);
   const [error, setError] = useState<string | undefined>(undefined);
 
@@ -50,11 +50,11 @@ const useKernelAccountRecovery = ({ address, onSetupGuardianRequest }: RecoveryC
   }, [data]);
 
   const openRecoveryPopup = useCallback(() => {
-    if (address === undefined) {
+    if (address === undefined || chainId === undefined) {
       return;
     }
     const parentUrl = encodeURIComponent(window.location.origin);
-    const dashboardUrl = `${RECOVERY_DASHBOARD_URL}/recovery-setup/${address}?parentUrl=${parentUrl}`;
+    const dashboardUrl = `${RECOVERY_DASHBOARD_URL}/recovery-setup/${address}?parentUrl=${parentUrl}&chainId=${chainId}`;
     const windowFeatures = 'width=450,height=650,resizable,scrollbars=yes,status=1';
     childWindowRef.current = window.open(dashboardUrl, '_blank', windowFeatures);
 
