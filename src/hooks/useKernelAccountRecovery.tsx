@@ -84,9 +84,9 @@ const useKernelAccountRecovery = ({
     }
     setIsPending(true);
     const parentUrl = encodeURIComponent(window.location.origin);
-    const dashboardUrl = `${RECOVERY_DASHBOARD_URL}/recovery-setup/${address}?parentUrl=${parentUrl}&chainId=${chainId}`;
+    let dashboardUrl = `${RECOVERY_DASHBOARD_URL}/recovery-setup/${address}?parentUrl=${parentUrl}&chainId=${chainId}`;
     if (suggestedGuardianAddress && isAddress(suggestedGuardianAddress)) {
-      dashboardUrl.concat(`&suggestedGuardianAddress=${suggestedGuardianAddress}`);
+      dashboardUrl = dashboardUrl.concat(`&suggestedGuardianAddress=${suggestedGuardianAddress}`);
     }
     const windowFeatures = 'width=400,height=720,resizable,scrollbars=yes,status=1';
     childWindowRef.current = window.open(dashboardUrl, '_blank', windowFeatures);
