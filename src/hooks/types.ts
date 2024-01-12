@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export type RecoveryConfig = {
-  address: `0x${string}`;
+  address?: `0x${string}`;
   chainId: number;
   suggestedGuardianAddress?: `0x${string}`;
   onSetupGuardianRequest: (userOpCallData: UserOperationCallData) => Promise<void>;
