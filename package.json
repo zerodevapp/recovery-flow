@@ -1,6 +1,6 @@
 {
   "name": "@zerodev/recovery",
-  "version": "0.0.1-beta.7",
+  "version": "0.0.1-beta.8",
   "description": "Easily integrate a recovery option for a Kernel smart contract wallet.",
   "files": [
     "dist"

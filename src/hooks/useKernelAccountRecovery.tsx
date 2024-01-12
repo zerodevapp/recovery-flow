@@ -3,6 +3,7 @@ import useSWR from 'swr';
 
 import { RecoveryConfig, RecoveryPopupMessage, validateUserOperationCallData } from "./types";
 import { KERNEL_API_URL, RECOVERY_DASHBOARD_URL } from "../constants";
+import { isAddress } from "../utils/isAddress";
 
 const fetcher = async (url: string) => {
   const response = await fetch(url);
@@ -31,12 +32,17 @@ type UseKernelAccountRecoveryResult = {
   guardians: string[];
 
   /**
-   * Returns true if the process to set a guardian has been initiated but not yet confirmed
+   * Returns true if the process to add or remove a guardian has been initiated but not yet confirmed
    */
   isPending: boolean;
 };
 
-const useKernelAccountRecovery = ({ address, onSetupGuardianRequest, chainId }: RecoveryConfig): UseKernelAccountRecoveryResult => {
+const useKernelAccountRecovery = ({
+  address,
+  onSetupGuardianRequest,
+  chainId,
+  suggestedGuardianAddress
+}: RecoveryConfig): UseKernelAccountRecoveryResult => {
   const childWindowRef = useRef<Window | null>(null);
   const [error, setError] = useState<string | undefined>(undefined);
   const [isPending, setIsPending] = useState<boolean>(false);
@@ -79,6 +85,9 @@ const useKernelAccountRecovery = ({ address, onSetupGuardianRequest, chainId }: 
     setIsPending(true);
     const parentUrl = encodeURIComponent(window.location.origin);
     const dashboardUrl = `${RECOVERY_DASHBOARD_URL}/recovery-setup/${address}?parentUrl=${parentUrl}&chainId=${chainId}`;
+    if (suggestedGuardianAddress && isAddress(suggestedGuardianAddress)) {
+      dashboardUrl.concat(`&suggestedGuardianAddress=${suggestedGuardianAddress}`);
+    }
     const windowFeatures = 'width=400,height=720,resizable,scrollbars=yes,status=1';
     childWindowRef.current = window.open(dashboardUrl, '_blank', windowFeatures);
 
