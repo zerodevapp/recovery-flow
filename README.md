@@ -1,6 +1,8 @@
 # @zerodev/recovery
 
-This package offers UI components for DApp developers to easily integrate account recovery.  The `useKernelAccountRecovery` hook opens a pop-up that guides the user through setting up a guardian.  The component only assumes that the account is running [Kernel](https://github.com/zerodevapp/kernel) -- it doesn't make any assumption about the SDK you are using to send UserOps, so it's compatible with any SDK.
+This package offers UI components for DApp developers to easily integrate account recovery.  The `useKernelAccountRecovery` hook opens a pop-up that guides the user through setting up a guardian.
+
+The component only assumes that the account is running [Kernel](https://github.com/zerodevapp/kernel) -- it doesn't make any assumption about the SDK you are using to send UserOps, so it's compatible with any SDK.
 
 You can see a demo here:
 
