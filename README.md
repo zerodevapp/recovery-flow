@@ -11,6 +11,17 @@ You can see a demo here:
 
 The guardian can complete recovery at the [recovery portal](https://recovery.zerodev.app).
 
+## Use Cases
+
+There are two typical use cases that this recovery flow supports:
+
+- Second-factory recovery
+  - The user sets a second factory they own as the guardian for their account.  For example, if could be another wallet they own, a passkey device, etc.
+
+- DApp-assisted recovery
+  - The user sets a wallet that the DApp owns as their guardian.  Then, when the user needs to recover their account, they reach out to the DApp and the DApp recovers for them.
+    - To suggest that the user set a specific DApp wallet as guardian, use the `defaultGuardianAddress` flag below.
+
 ## Installation
 
 To install the package, run the following command:
