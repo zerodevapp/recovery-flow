@@ -6,7 +6,8 @@ The component only assumes that the account is running [Kernel](https://github.c
 
 You can see a demo here:
 
-- [Demo](https://recovery-demo.zerodev.app) 
+- [Demo video](https://twitter.com/zerodev_app/status/1747313992756765078)
+- [Demo website](https://recovery-demo.zerodev.app) 
 - [Demo code](https://github.com/zerodevapp/recovery-demo)
 
 The guardian can complete recovery at the [recovery portal](https://recovery.zerodev.app).
