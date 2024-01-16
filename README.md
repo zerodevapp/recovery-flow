@@ -20,7 +20,7 @@ There are two typical use cases that this recovery flow supports:
 
 - DApp-assisted recovery
   - The user sets a wallet that the DApp owns as their guardian.  Then, when the user needs to recover their account, they reach out to the DApp and the DApp recovers for them.
-    - To suggest that the user set a specific DApp wallet as guardian, use the `defaultGuardianAddress` flag below.
+    - To suggest that the user set a specific DApp wallet as guardian, use the `suggestedGuardianAddress` flag below.
 
 ## Installation
 
@@ -90,7 +90,7 @@ export default App;
 | `address`               | `string`                  | The address of the account for which to manage recovery.             | Yes      |
 | `chainId`               | `number`                  | The ID of the blockchain network.                                    | Yes      |
 | `onSetupGuardianRequest`| `function`                | This is a callback function that processes user operation call data. The popup assembles this call data based on user preferences and then forwards it to this callback function for your implementation to manage.                | Yes      |
-| `defaultGuardianAddress`| `string`                  | (Optional) A pre-specified guardian address to prefill in the popup, ideal for suggesting your wallet as a guardian. While this address is set as the prefilled option, users retain the option to modify it within the popup as needed.       | No       |
+| `suggestedGuardianAddress`| `string`                  | (Optional) A pre-specified guardian address to prefill in the popup, ideal for suggesting your wallet as a guardian. While this address is set as the prefilled option, users retain the option to modify it within the popup as needed.       | No       |
 
 ### Output Properties
 
