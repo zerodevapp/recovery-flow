@@ -50,7 +50,7 @@ const useKernelAccountRecovery = ({
   const [requestType, setRequestType] = useState<'enableRecovery' | 'deleteRecovery' | undefined>(undefined);
 
   const { data } = useSWR(
-    address ? `${KERNEL_API_URL}/accounts/${address}/guardians` : null, 
+    address ? `${KERNEL_API_URL}/accounts/${address}/guardians?chainId=${chainId}` : null, 
     fetcher,
     { refreshInterval: 3000 }
   );
