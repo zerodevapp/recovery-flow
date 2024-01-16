@@ -41,7 +41,10 @@ function App() {
     chainId,
     suggestedGuardianAddress, // optional
     onSetupGuardianRequest: async (userOpCallData) => {
-      // Implement the logic to handle the user operation call data
+      // Implement the logic to send the UserOp
+      // For example, if you are using the ZeroDev SDK, you could do:
+      //
+      // await ecdsaProvider.sendUserOperation(userOpCallData)
     }
   });
 
